@@ -16,30 +16,26 @@ Times =  ('Morning', 'Afternoon', 'Evening', 'Night')
 class RideRequest:
     def __innit__(self, student_name, destination, time, year):
         
-        if destination in Locations:
-            self.desination = destination
-        else:
+        if destination not in Locations:
             print(f"{desination} is not in List of Permited Locations")
             return 0
         
-        if year in Years:
-            self.year = year
-        else:
+        if year not in Years:
             print(f"year {year} does not exist")
             return 0
 
-        if time in Times:
-            self.time = time
-        else:
+        if time not in Times:
             print(f"Invalid Time")
             return 0
-
-
+        
+        self.desination = destination
+        self.year = year
+        self.time = time
         self.student_name = student_name
 
         return 1
     
-    
+
 
 
 
