@@ -7,17 +7,17 @@ import os
 #                                           Parameters
 #--------------------------------------------------------------------------------------------------
 Locations = ("Delhi", "Jaipur")
-Years = ('1', '2', '3', '4', '5')
+Years = (1, 2, 3, 4, 5)
 Times =  ('Morning', 'Afternoon', 'Evening', 'Night')
-
+Num_Seats = (1, 2, 3, 4)
 #--------------------------------------------------------------------------------------------------
 #                                            Classes
 #--------------------------------------------------------------------------------------------------
 class RideRequest:
-    def __innit__(self, student_name, destination, time, year):
+    def __innit__(self, student_name :str, destination :str, time :str, year :int):
         
         if destination not in Locations:
-            print(f"{desination} is not in List of Permited Locations")
+            print(f"{destination} is not in List of Permited Locations")
             return 0
         
         if year not in Years:
@@ -37,10 +37,10 @@ class RideRequest:
 
 
 class Cab:
-    def __innit__(self, driver_name, destination,  num_seats, students):
+    def __innit__(self, driver_name :str, destination :str,  num_seats :int, students :list[str]):
 
         if destination not in Locations:
-            print(f"{desination} is not in List of Permited Locations")
+            print(f"{destination} is not in List of Permited Locations")
             return 0
         
         if num_seats not in Num_Seats:
