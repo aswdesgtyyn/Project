@@ -25,7 +25,7 @@ class RideRequest:
             return 0
 
         if time not in Times:
-            print(f"Invalid Time")
+            print(f"Invalid Time {time}")
             return 0
         
         self.desination = destination
