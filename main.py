@@ -34,6 +34,30 @@ class RideRequest:
         self.student_name = student_name
 
         return 1
+
+
+class Cab:
+    def __innit__(self, driver_name, destination,  num_seats, students):
+
+        if destination not in Locations:
+            print(f"{desination} is not in List of Permited Locations")
+            return 0
+        
+        if num_seats not in Num_Seats:
+            print(f'Invalid Number of Seats, {num_seats}')
+            return 0
+        
+        if len(students) > 4:
+            print(f'Invalid Number of Students, {len(students)}')
+
+        self.driver_name = driver_name
+        self.destination = destination
+        self.students = list(students)
+
+        return 1
+
+
+
     
 
 
