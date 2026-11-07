@@ -22,7 +22,6 @@ class RideRequest:
         self.time = time
         self.student_name = student_name
 
-        return 1
 
 
 
@@ -48,5 +47,14 @@ class Cab:
         self.left = bool(left)
         self.students = list(students)
 
+class Col:
+    rst = "\033[0m" 
+    bo = "\033[1m"  
+    it = "\033[3m"  
+    un = "\033[4m" 
 
-        return 1
+    r = "\033[31m"
+    g = "\033[32m" 
+    y = "\033[33m" 
+    b = "\033[34m" 
+    p = "\033[35m" 

@@ -1,6 +1,6 @@
 import csv
 import os
-from classes import Cab, RideRequest
+from classes import Cab, RideRequest, Col
 
 Waiting_List = []
 Cabs = []
@@ -24,16 +24,27 @@ def Load_Cab_Data():
     
 
 def Show_Cabs():
-    print('|-------------------------------------------------------|')
-    print('|                     List of Cabs                      |')
-    print('|-------------------------------------------------------|')
-    print('Driver Name\tDestination\tTime\tSeats\tAvailibilty')
+    print('|------------------------------------------------------------------|')
+    print(f'|                           {Col.bo}{Col.b}{Col.un}List of Cabs{Col.rst}                           |')
+    print('|------------------------------------------------------------------|')
+    print(f'|  {Col.bo}{'Driver Name':<20} {'Destination':<12} {'Time':<10} {'Seats':<5} {'Availibilty':<5}{Col.rst}  |')
     for a in Cabs:
-        print(f"{a.driver_name}\t{a.destination}\t{a.time}\t{len(a.students)}/{a.max_seats}\t{"Available" if a.left else "Left"}")
+        dn = a.driver_name
 
-    print('|-------------------------------------------------------|')
-    print('| Press Enter to go back...                             |')
-    print('|-------------------------------------------------------|')
+        des = a.destination
+        des_c = Col.b if des[0] == 'D' else Col.y
+        des = des_c + f"{des:<12}" + Col.rst
+
+        tim = a.time
+        stu = f'{len(a.students)}/{a.max_seats}'
+
+        lef = f"{Col.g}Available  {Col.rst}" if a.left else f"{Col.r}Left       {Col.rst}"
+
+        print(f"|  {dn:<20} {des} {tim:<10} {stu:<5} {lef:<5}  |")
+
+    print('|------------------------------------------------------------------|')
+    print('| Press Enter to go back...                                                  |')
+    print('|------------------------------------------------------------------|')
     input('|>')
 
 def clear():
@@ -50,22 +61,24 @@ Condition = bool(Cabs)
 
 while Condition:
     clear()
-    print('|-------------------------------------------------------|')
-    print('|                       Main Menu                       |')
-    print('|-------------------------------------------------------|')
-    print('|    1. Submit a Cab Request                            |')
-    print('|    2. Find Matches                                    |')
-    print('|    3. Dispatch a Cab                                  |')
-    print('|    4. Show All Cabs                                   |')
-    print('|    5. Exit the Program                                |')
-    print('|-------------------------------------------------------|')
-    
+    print(f'|-------------------------------------------------------|')
+    print(f'|{Col.bo}{Col.b}                       {Col.un}Main Menu{Col.rst}                       |')
+    print(f'|-------------------------------------------------------|')
+    print(f'|{Col.bo}    1. Submit a Cab Request                            {Col.rst}|')
+    print(f'|{Col.bo}    2. Find Matches                                    {Col.rst}|')
+    print(f'|{Col.bo}    3. Dispatch a Cab                                  {Col.rst}|')
+    print(f'|{Col.bo}    4. Show All Cabs                                   {Col.rst}|')
+    print(f'|{Col.bo}{Col.r}    5. Exit the Program                                {Col.rst}|')
+    print(f'|-------------------------------------------------------|')
+    o=0
     try:
         o = int(input('|>'))
     except:
         clear()
-        print('!-!   Invalid Input    !-!')
+        print(f'{Col.bo}{Col.r}!-!   Invalid Input    !-!{Col.rst}')
         print('Press Enter to Continue...')
+        input()
+        continue
 
     if o == 1:
         pass
@@ -78,7 +91,10 @@ while Condition:
     elif o == 5:
         break
     else:
-        print('!-!   Invalid Input    !-!')
+        clear()
+        print(f'{Col.bo}{Col.r}!-!   Invalid Input    !-!{Col.rst}')
+        print('Press Enter to Continue...')
+        input()
         continue
 
 clear()
