@@ -11,9 +11,6 @@ Contains all the classes of the project
 2. Cab
     - Add Details Here
 
-All classes return 1 upon correct Innitalisation and return 0 upon incorrect Innitalisatio.
-
-
 ## main.py
 Add Details Here
 
