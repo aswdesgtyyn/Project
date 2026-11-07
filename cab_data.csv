@@ -1,6 +1,6 @@
 Driver Name,Destination,Time,Max Seats,Left
 Paresh Shan,Jaipur,Night,4,True
-Dilip Kumar (Late),Delhi,Night,1,False
+Dilip Kumar,Delhi,Night,1,False
 Ravioli Sharma,Jaipur,Night,1,False
 Badal Speed,Delhi,Afternoon,4,True
 Akash Vani,Jaipur,Evening,4,True
@@ -16,7 +16,6 @@ Drift Raja,Jaipur,Afternoon,3,True
 Jaldi Karo Joshi,Delhi,Night,4,False
 No Signal Sen,Jaipur,Night,2,True
 Over Take Oberoi,Jaipur,Evening,1,True
-Bumper To Bumper Banerjee,Jaipur,Morning,1,False
 Puncture Patel,Jaipur,Morning,3,True
 Chalan Chandran,Jaipur,Night,3,True
 Full Speed Shukla,Delhi,Night,2,False
