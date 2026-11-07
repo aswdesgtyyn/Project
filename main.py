@@ -1,13 +1,30 @@
-import json
+import csv
 import os
 from classes import Cab, RideRequest
 
 Waiting_List = []
-
+Cabs = []
 
 #--------------------------------------------------------------------------------------------------
 #                                            Functions
 #--------------------------------------------------------------------------------------------------
+
+def Load_Cab_Data():
+    l = []
+    try:
+        fin = open('cab_data.csv', newline='\n', mode='r')
+        reader = csv.DictReader(fin, delimiter=',')
+
+        for row in reader:
+            obj = Cab(row['Driver Name'], row['Destination'], int(row['Max Seats']), row['Time'], False if row['Left'] == 'False' else True)
+            l.append(obj)
+    
+        fin.close()
+        return l
+    except:
+        print('Error in Reading cab_data.csv')
+        return []
+
 
 def clear():
     if os.name == 'nt':
@@ -15,17 +32,14 @@ def clear():
     else:
         os.system('clear')
 
-def submit_request():
-    pass
-
-def find_matches():
-    pass
-def dispatch():
-    pass
-
-
 #--------------------------------------------------------------------------------------------------
-while True:
+
+Cabs = Load_Cab_Data()
+
+Condition = bool(Cabs) 
+
+
+while Condition:
     clear()
     print('|-------------------------------------------------------|')
     print('|                       Main Menu                       |')
@@ -43,11 +57,11 @@ while True:
         continue
 
     if o == 1:
-        submit_request()
+        pass
     elif o == 2:
-        find_matches()
+        pass
     elif o == 3:
-        dispatch()
+        pass
     elif o == 4:
         break
     else:

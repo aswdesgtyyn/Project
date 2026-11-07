@@ -1,5 +1,4 @@
 Locations = ("Delhi", "Jaipur")
-Years = (1, 2, 3, 4, 5)
 Times =  ('Morning', 'Afternoon', 'Evening', 'Night')
 
 
@@ -10,7 +9,7 @@ class RideRequest:
             print(f"{destination} is not in List of Permited Locations")
             return 0
         
-        if year not in Years:
+        if year > 0 and year < 6:
             print(f"year {year} does not exist")
             return 0
 
