@@ -1,89 +1,511 @@
 fin = open('data/cab_data.csv', 'w')
 
-cab = """Driver Name,Destination,Time,Max Seats,Left
-Paresh Shan,Jaipur,Night,4,True
-Dilip Kumar,Delhi,Night,1,False
-Ravioli Sharma,Jaipur,Night,1,False
-Badal Speed,Delhi,Afternoon,4,True
-Akash Vani,Jaipur,Evening,4,True
-Gaddi Prasad,Jaipur,Night,1,True
-Break Fail Kapoor,Jaipur,Night,4,False
-Speedy Singh,Jaipur,Morning,2,True
-Sultan Of Swag,Delhi,Night,3,True
-Chal Bhaag Verma,Delhi,Afternoon,2,True
-Chai Pilo Gupta,Jaipur,Afternoon,2,True
-Horn Ok Please,Jaipur,Afternoon,3,False
-U-Turn Yadav,Delhi,Evening,3,False
-Drift Raja,Jaipur,Afternoon,3,True
-Jaldi Karo Joshi,Delhi,Night,4,False
-No Signal Sen,Jaipur,Night,2,True
-Over Take Oberoi,Jaipur,Evening,1,True
-Puncture Patel,Jaipur,Morning,3,True
-Chalan Chandran,Jaipur,Night,3,True
-Full Speed Shukla,Delhi,Night,2,False
-Traffic Jam Tandon,Delhi,Morning,2,False
-Meter Down Menon,Jaipur,Night,2,True
-Honk Lal,Delhi,Morning,1,False
-"""
+cab = """[
+  {
+    "Driver Name": "Paresh Shan",
+    "Destination": "Jaipur",
+    "Time": "Night",
+    "Max Seats": 4,
+    "Left": true,
+    "Seats": []
+  },
+  {
+    "Driver Name": "Dilip Kumar",
+    "Destination": "Delhi",
+    "Time": "Night",
+    "Max Seats": 1,
+    "Left": false,
+    "Seats": []
+  },
+  {
+    "Driver Name": "Ravioli Sharma",
+    "Destination": "Jaipur",
+    "Time": "Night",
+    "Max Seats": 1,
+    "Left": false,
+    "Seats": []
+  },
+  {
+    "Driver Name": "Badal Speed",
+    "Destination": "Delhi",
+    "Time": "Afternoon",
+    "Max Seats": 4,
+    "Left": true,
+    "Seats": []
+  },
+  {
+    "Driver Name": "Akash Vani",
+    "Destination": "Jaipur",
+    "Time": "Evening",
+    "Max Seats": 4,
+    "Left": true,
+    "Seats": []
+  },
+  {
+    "Driver Name": "Gaddi Prasad",
+    "Destination": "Jaipur",
+    "Time": "Night",
+    "Max Seats": 1,
+    "Left": true,
+    "Seats": []
+  },
+  {
+    "Driver Name": "Break Fail Kapoor",
+    "Destination": "Jaipur",
+    "Time": "Night",
+    "Max Seats": 4,
+    "Left": false,
+    "Seats": []
+  },
+  {
+    "Driver Name": "Speedy Singh",
+    "Destination": "Jaipur",
+    "Time": "Morning",
+    "Max Seats": 2,
+    "Left": true,
+    "Seats": []
+  },
+  {
+    "Driver Name": "Sultan Of Swag",
+    "Destination": "Delhi",
+    "Time": "Night",
+    "Max Seats": 3,
+    "Left": true,
+    "Seats": []
+  },
+  {
+    "Driver Name": "Chal Bhaag Verma",
+    "Destination": "Delhi",
+    "Time": "Afternoon",
+    "Max Seats": 2,
+    "Left": true,
+    "Seats": []
+  },
+  {
+    "Driver Name": "Chai Pilo Gupta",
+    "Destination": "Jaipur",
+    "Time": "Afternoon",
+    "Max Seats": 2,
+    "Left": true,
+    "Seats": []
+  },
+  {
+    "Driver Name": "Horn Ok Please",
+    "Destination": "Jaipur",
+    "Time": "Afternoon",
+    "Max Seats": 3,
+    "Left": false,
+    "Seats": []
+  },
+  {
+    "Driver Name": "U-Turn Yadav",
+    "Destination": "Delhi",
+    "Time": "Evening",
+    "Max Seats": 3,
+    "Left": false,
+    "Seats": []
+  },
+  {
+    "Driver Name": "Drift Raja",
+    "Destination": "Jaipur",
+    "Time": "Afternoon",
+    "Max Seats": 3,
+    "Left": true,
+    "Seats": []
+  },
+  {
+    "Driver Name": "Jaldi Karo Joshi",
+    "Destination": "Delhi",
+    "Time": "Night",
+    "Max Seats": 4,
+    "Left": false,
+    "Seats": []
+  },
+  {
+    "Driver Name": "No Signal Sen",
+    "Destination": "Jaipur",
+    "Time": "Night",
+    "Max Seats": 2,
+    "Left": true,
+    "Seats": []
+  },
+  {
+    "Driver Name": "Over Take Oberoi",
+    "Destination": "Jaipur",
+    "Time": "Evening",
+    "Max Seats": 1,
+    "Left": true,
+    "Seats": []
+  },
+  {
+    "Driver Name": "Puncture Patel",
+    "Destination": "Jaipur",
+    "Time": "Morning",
+    "Max Seats": 3,
+    "Left": true,
+    "Seats": []
+  },
+  {
+    "Driver Name": "Chalan Chandran",
+    "Destination": "Jaipur",
+    "Time": "Night",
+    "Max Seats": 3,
+    "Left": true,
+    "Seats": []
+  },
+  {
+    "Driver Name": "Full Speed Shukla",
+    "Destination": "Delhi",
+    "Time": "Night",
+    "Max Seats": 2,
+    "Left": false,
+    "Seats": []
+  },
+  {
+    "Driver Name": "Traffic Jam Tandon",
+    "Destination": "Delhi",
+    "Time": "Morning",
+    "Max Seats": 2,
+    "Left": false,
+    "Seats": []
+  },
+  {
+    "Driver Name": "Meter Down Menon",
+    "Destination": "Jaipur",
+    "Time": "Night",
+    "Max Seats": 2,
+    "Left": true,
+    "Seats": []
+  },
+  {
+    "Driver Name": "Honk Lal",
+    "Destination": "Delhi",
+    "Time": "Morning",
+    "Max Seats": 1,
+    "Left": false,
+    "Seats": []
+  }
+]"""
 
 fin.write(cab)
 fin.close()
 
 fin = open('data/ride_data.csv', 'w')
 
-ride = """Student Name,Destination,Time,Year
-Maggi Sharma,Delhi,Night,1
-Backbench Patel,Delhi,Morning,3
-Proxy Verma,Delhi,Night,1
-Chai Sutta Singh,Delhi,Night,1
-Sleepless Sen,Delhi,Afternoon,5
-Assignment Roy,Delhi,Afternoon,2
-Night Owl Nambiar,Delhi,Evening,4
-Mass Bunk Mukherjee,Jaipur,Morning,3
-Grace Marks Gupta,Jaipur,Afternoon,1
-Canteen Kumar,Delhi,Evening,1
-Syllabus Outside Sharma,Jaipur,Night,4
-Late Latif Lal,Delhi,Night,1
-Kallu Coffee,Delhi,Evening,1
-Viva Victim Vyas,Jaipur,Evening,3
-Attendance Low Joshi,Delhi,Night,2
-Detained Deshmukh,Jaipur,Afternoon,4
-Copy Paste Chawla,Jaipur,Afternoon,5
-Internal Marks Iyer,Delhi,Afternoon,3
-Lab Record Reddi,Delhi,Night,1
-Firr Se Fail Kulkarni,Jaipur,Night,1
-Last Minute Mahajan,Delhi,Evening,5
-KT Kumar,Delhi,Evening,5
-Canteen Dues Das,Delhi,Evening,3
-Prac Exam Prasad,Jaipur,Evening,4
-Viva Vacant Varma,Jaipur,Evening,1
-Backlog Bhandari,Jaipur,Night,5
-Maggi Masala Mehta,Delhi,Evening,5
-Noc Clearance Nair,Jaipur,Afternoon,1
-Group Project Goyal,Delhi,Evening,3
-Syllabus Scared Shah,Delhi,Afternoon,1
-Chai Break Chhabra,Jaipur,Evening,1
-Late Submission Saxena,Jaipur,Evening,3
-Proxy King Kapoor,Jaipur,Afternoon,3
-Re-evaluation Rao,Delhi,Morning,4
-Hostel Gate Hedgewar,Jaipur,Night,3
-Night Study Naidu,Jaipur,Morning,2
-Attendance Shortage Swamy,Delhi,Evening,4
-Copying Expert Edmonds,Delhi,Evening,5
-Zero Internal Sen,Jaipur,Morning,3
-Mass Bunk Mishra,Jaipur,Morning,5
-Doubt Clearing Dutta,Jaipur,Morning,4
-Backbencher Bhatnagar,Jaipur,Evening,4
-Canteen Credit Chaudhry,Delhi,Afternoon,4
-Fail Phobia Pandey,Delhi,Evening,5
-Extra Sheet Grover,Jaipur,Morning,2
-Lab Coat Lamba,Jaipur,Evening,1
-Unit Test Trivedi,Jaipur,Morning,4
-Midsem Panic Puri,Delhi,Night,4
-Grace Mark Ghosal,Delhi,Morning,5
-Syllabus Skip Sethi,Jaipur,Afternoon,1
-Attendance Fraud Farooqui,Delhi,Evening,1
-Degree Delayed Deshmukh,Jaipur,Evening,1"""
+ride = """[
+  {
+    "Student Name": "Maggi Sharma",
+    "Destination": "Delhi",
+    "Time": "Night",
+    "Year": 1
+  },
+  {
+    "Student Name": "Backbench Patel",
+    "Destination": "Delhi",
+    "Time": "Morning",
+    "Year": 3
+  },
+  {
+    "Student Name": "Proxy Verma",
+    "Destination": "Delhi",
+    "Time": "Night",
+    "Year": 1
+  },
+  {
+    "Student Name": "Chai Sutta Singh",
+    "Destination": "Delhi",
+    "Time": "Night",
+    "Year": 1
+  },
+  {
+    "Student Name": "Sleepless Sen",
+    "Destination": "Delhi",
+    "Time": "Afternoon",
+    "Year": 5
+  },
+  {
+    "Student Name": "Assignment Roy",
+    "Destination": "Delhi",
+    "Time": "Afternoon",
+    "Year": 2
+  },
+  {
+    "Student Name": "Night Owl Nambiar",
+    "Destination": "Delhi",
+    "Time": "Evening",
+    "Year": 4
+  },
+  {
+    "Student Name": "Mass Bunk Mukherjee",
+    "Destination": "Jaipur",
+    "Time": "Morning",
+    "Year": 3
+  },
+  {
+    "Student Name": "Grace Marks Gupta",
+    "Destination": "Jaipur",
+    "Time": "Afternoon",
+    "Year": 1
+  },
+  {
+    "Student Name": "Canteen Kumar",
+    "Destination": "Delhi",
+    "Time": "Evening",
+    "Year": 1
+  },
+  {
+    "Student Name": "Syllabus Outside Sharma",
+    "Destination": "Jaipur",
+    "Time": "Night",
+    "Year": 4
+  },
+  {
+    "Student Name": "Late Latif Lal",
+    "Destination": "Delhi",
+    "Time": "Night",
+    "Year": 1
+  },
+  {
+    "Student Name": "Kallu Coffee",
+    "Destination": "Delhi",
+    "Time": "Evening",
+    "Year": 1
+  },
+  {
+    "Student Name": "Viva Victim Vyas",
+    "Destination": "Jaipur",
+    "Time": "Evening",
+    "Year": 3
+  },
+  {
+    "Student Name": "Attendance Low Joshi",
+    "Destination": "Delhi",
+    "Time": "Night",
+    "Year": 2
+  },
+  {
+    "Student Name": "Detained Deshmukh",
+    "Destination": "Jaipur",
+    "Time": "Afternoon",
+    "Year": 4
+  },
+  {
+    "Student Name": "Copy Paste Chawla",
+    "Destination": "Jaipur",
+    "Time": "Afternoon",
+    "Year": 5
+  },
+  {
+    "Student Name": "Internal Marks Iyer",
+    "Destination": "Delhi",
+    "Time": "Afternoon",
+    "Year": 3
+  },
+  {
+    "Student Name": "Lab Record Reddi",
+    "Destination": "Delhi",
+    "Time": "Night",
+    "Year": 1
+  },
+  {
+    "Student Name": "Firr Se Fail Kulkarni",
+    "Destination": "Jaipur",
+    "Time": "Night",
+    "Year": 1
+  },
+  {
+    "Student Name": "Last Minute Mahajan",
+    "Destination": "Delhi",
+    "Time": "Evening",
+    "Year": 5
+  },
+  {
+    "Student Name": "KT Kumar",
+    "Destination": "Delhi",
+    "Time": "Evening",
+    "Year": 5
+  },
+  {
+    "Student Name": "Canteen Dues Das",
+    "Destination": "Delhi",
+    "Time": "Evening",
+    "Year": 3
+  },
+  {
+    "Student Name": "Prac Exam Prasad",
+    "Destination": "Jaipur",
+    "Time": "Evening",
+    "Year": 4
+  },
+  {
+    "Student Name": "Viva Vacant Varma",
+    "Destination": "Jaipur",
+    "Time": "Evening",
+    "Year": 1
+  },
+  {
+    "Student Name": "Backlog Bhandari",
+    "Destination": "Jaipur",
+    "Time": "Night",
+    "Year": 5
+  },
+  {
+    "Student Name": "Maggi Masala Mehta",
+    "Destination": "Delhi",
+    "Time": "Evening",
+    "Year": 5
+  },
+  {
+    "Student Name": "Noc Clearance Nair",
+    "Destination": "Jaipur",
+    "Time": "Afternoon",
+    "Year": 1
+  },
+  {
+    "Student Name": "Group Project Goyal",
+    "Destination": "Delhi",
+    "Time": "Evening",
+    "Year": 3
+  },
+  {
+    "Student Name": "Syllabus Scared Shah",
+    "Destination": "Delhi",
+    "Time": "Afternoon",
+    "Year": 1
+  },
+  {
+    "Student Name": "Chai Break Chhabra",
+    "Destination": "Jaipur",
+    "Time": "Evening",
+    "Year": 1
+  },
+  {
+    "Student Name": "Late Submission Saxena",
+    "Destination": "Jaipur",
+    "Time": "Evening",
+    "Year": 3
+  },
+  {
+    "Student Name": "Proxy King Kapoor",
+    "Destination": "Jaipur",
+    "Time": "Afternoon",
+    "Year": 3
+  },
+  {
+    "Student Name": "Re-evaluation Rao",
+    "Destination": "Delhi",
+    "Time": "Morning",
+    "Year": 4
+  },
+  {
+    "Student Name": "Hostel Gate Hedgewar",
+    "Destination": "Jaipur",
+    "Time": "Night",
+    "Year": 3
+  },
+  {
+    "Student Name": "Night Study Naidu",
+    "Destination": "Jaipur",
+    "Time": "Morning",
+    "Year": 2
+  },
+  {
+    "Student Name": "Attendance Shortage Swamy",
+    "Destination": "Delhi",
+    "Time": "Evening",
+    "Year": 4
+  },
+  {
+    "Student Name": "Copying Expert Edmonds",
+    "Destination": "Delhi",
+    "Time": "Evening",
+    "Year": 5
+  },
+  {
+    "Student Name": "Zero Internal Sen",
+    "Destination": "Jaipur",
+    "Time": "Morning",
+    "Year": 3
+  },
+  {
+    "Student Name": "Mass Bunk Mishra",
+    "Destination": "Jaipur",
+    "Time": "Morning",
+    "Year": 5
+  },
+  {
+    "Student Name": "Doubt Clearing Dutta",
+    "Destination": "Jaipur",
+    "Time": "Morning",
+    "Year": 4
+  },
+  {
+    "Student Name": "Backbencher Bhatnagar",
+    "Destination": "Jaipur",
+    "Time": "Evening",
+    "Year": 4
+  },
+  {
+    "Student Name": "Canteen Credit Chaudhry",
+    "Destination": "Delhi",
+    "Time": "Afternoon",
+    "Year": 4
+  },
+  {
+    "Student Name": "Fail Phobia Pandey",
+    "Destination": "Delhi",
+    "Time": "Evening",
+    "Year": 5
+  },
+  {
+    "Student Name": "Extra Sheet Grover",
+    "Destination": "Jaipur",
+    "Time": "Morning",
+    "Year": 2
+  },
+  {
+    "Student Name": "Lab Coat Lamba",
+    "Destination": "Jaipur",
+    "Time": "Evening",
+    "Year": 1
+  },
+  {
+    "Student Name": "Unit Test Trivedi",
+    "Destination": "Jaipur",
+    "Time": "Morning",
+    "Year": 4
+  },
+  {
+    "Student Name": "Midsem Panic Puri",
+    "Destination": "Delhi",
+    "Time": "Night",
+    "Year": 4
+  },
+  {
+    "Student Name": "Grace Mark Ghosal",
+    "Destination": "Delhi",
+    "Time": "Morning",
+    "Year": 5
+  },
+  {
+    "Student Name": "Syllabus Skip Sethi",
+    "Destination": "Jaipur",
+    "Time": "Afternoon",
+    "Year": 1
+  },
+  {
+    "Student Name": "Attendance Fraud Farooqui",
+    "Destination": "Delhi",
+    "Time": "Evening",
+    "Year": 1
+  },
+  {
+    "Student Name": "Degree Delayed Deshmukh",
+    "Destination": "Jaipur",
+    "Time": "Evening",
+    "Year": 1
+  }
+]"""
 
 fin.write(ride)
 

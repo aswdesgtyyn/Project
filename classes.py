@@ -1,4 +1,4 @@
-import csv
+import json
 
 Locations = ("Delhi", "Jaipur")
 Times =  ('Morning', 'Afternoon', 'Evening', 'Night')
@@ -30,13 +30,13 @@ class RideRequest:
 
     @classmethod
     def Load_Data(cls):
-        fin = open('data/ride_data.csv', newline='\n', mode='r')
-        reader = csv.DictReader(fin, delimiter=',')
+        fin = open('data/ride_data.json', newline='\n', mode='r')
+        data = json.load(fin)
 
-        for row in reader:
-            obj = cls(row['Student Name'], row['Destination'], row['Time'], int(row['Year']))
+        for row in data:
+            obj = cls(row['Student Name'], row['Destination'], row['Time'], row['Year'])
             (cls.Requests).append(obj)
-    
+        
         fin.close()
 
 
@@ -68,11 +68,11 @@ class Cab:
 
     @classmethod
     def Load_Data(cls):
-        fin = open('data/cab_data.csv', newline='\n', mode='r')
-        reader = csv.DictReader(fin, delimiter=',')
+        fin = open('data/cab_data.json', newline='\n', mode='r')
+        data = json.load(fin)
 
-        for row in reader:
-            obj = cls(row['Driver Name'], row['Destination'], int(row['Max Seats']), row['Time'], False if row['Left'] == 'False' else True, [])
+        for row in data:
+            obj = cls(row['Driver Name'], row['Destination'], int(row['Max Seats']), row['Time'], row['Left'], row['Seats'])
             (cls.Cabs).append(obj)
     
         fin.close()
