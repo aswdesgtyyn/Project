@@ -54,7 +54,7 @@ class Cab:
 
     @classmethod
     def Load_Data(cls):
-        fin = open('cab_data.csv', newline='\n', mode='r')
+        fin = open('data/cab_data.csv', newline='\n', mode='r')
         reader = csv.DictReader(fin, delimiter=',')
 
         for row in reader:
