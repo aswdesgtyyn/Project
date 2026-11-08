@@ -29,7 +29,7 @@ Honk Lal,Delhi,Morning,1,False
 fin.write(cab)
 fin.close()
 
-fin = open('data/ride_data.csv')
+fin = open('data/ride_data.csv', 'w')
 
 ride = """Student Name, Destination, Time, Year
 Maggi Sharma,Delhi,Night,1
