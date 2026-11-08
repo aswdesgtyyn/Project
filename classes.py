@@ -5,6 +5,9 @@ Times =  ('Morning', 'Afternoon', 'Evening', 'Night')
 
 
 class RideRequest:
+
+    Requests = []
+
     def __init__(self, student_name :str, destination :str, time :str, year :int):
         
         if destination not in Locations:
@@ -24,6 +27,17 @@ class RideRequest:
         self.time = time
         self.student_name = student_name
 
+
+    @classmethod
+    def Load_Data(cls):
+        fin = open('data/ride_data.csv', newline='\n', mode='r')
+        reader = csv.DictReader(fin, delimiter=',')
+
+        for row in reader:
+            obj = cls(row['Student Name'], row['Destination'], row['Time'], int(row['Year']))
+            (cls.Requests).append(obj)
+    
+        fin.close()
 
 
 

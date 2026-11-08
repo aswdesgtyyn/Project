@@ -31,7 +31,7 @@ fin.close()
 
 fin = open('data/ride_data.csv', 'w')
 
-ride = """Student Name, Destination, Time, Year
+ride = """Student Name,Destination,Time,Year
 Maggi Sharma,Delhi,Night,1
 Backbench Patel,Delhi,Morning,3
 Proxy Verma,Delhi,Night,1

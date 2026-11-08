@@ -1,4 +1,5 @@
 import csv
+import atexit
 import os
 from classes import Cab, RideRequest, Col
 
@@ -13,9 +14,23 @@ def clear():
     else:
         os.system('clear')
 
+def Save_All():
+    clear()
+    print(f'{Col.r}App Shutdown Detected!{Col.rst}')
+    print(f'{Col.b}Saving App Data...{Col.rst}')
+
+    # Impliment a Saving Function here
+
+
+
 
 #--------------------------------------------------------------------------------------------------
+atexit.register(Save_All)
+
+
 Cab.Load_Data()
+RideRequest.Load_Data()
+
 
 while True:
     clear()
