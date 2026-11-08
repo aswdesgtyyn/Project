@@ -1,3 +1,5 @@
+import csv
+
 Locations = ("Delhi", "Jaipur")
 Times =  ('Morning', 'Afternoon', 'Evening', 'Night')
 
@@ -26,6 +28,9 @@ class RideRequest:
 
 
 class Cab:
+    Cabs = []
+
+
     def __init__(self, driver_name :str, destination :str,  max_seats :int, time :str, left :bool, students :list[str]):
 
         if destination not in Locations:
@@ -47,6 +52,50 @@ class Cab:
         self.left = bool(left)
         self.students = list(students)
 
+    @classmethod
+    def Load_Data(cls):
+        fin = open('cab_data.csv', newline='\n', mode='r')
+        reader = csv.DictReader(fin, delimiter=',')
+
+        for row in reader:
+            obj = cls(row['Driver Name'], row['Destination'], int(row['Max Seats']), row['Time'], False if row['Left'] == 'False' else True, [])
+            (cls.Cabs).append(obj)
+    
+        fin.close()
+
+    @classmethod
+    def Show(cls):
+        print('|------------------------------------------------------------------|')
+        print(f'|                           {Col.bo}{Col.b}{Col.un}List of Cabs{Col.rst}                           |')
+        print('|------------------------------------------------------------------|')
+        
+        
+        print(f'|  {Col.bo}{'Driver Name':<20} {'Destination':<12} {'Time':<10} {'Seats':<5} {'Availibilty':<5}{Col.rst}  |')
+        
+        
+        for a in cls.Cabs:
+            dn = a.driver_name
+
+            des = a.destination
+            des_c = Col.b if des[0] == 'D' else Col.y
+            des = des_c + f"{des:<12}" + Col.rst
+
+            tim = a.time
+            stu = f'{len(a.students)}/{a.max_seats}'
+
+            lef = f"{Col.g}Available  {Col.rst}" if a.left else f"{Col.r}Left       {Col.rst}"
+
+            print(f"|  {dn:<20} {des} {tim:<10} {stu:<5} {lef:<5}  |")
+
+    
+        print('|------------------------------------------------------------------|')
+        print('| Press Enter to go back...                                                  |')
+        print('|------------------------------------------------------------------|')
+        input('|>')
+
+
+
+# Colour Class
 class Col:
     rst = "\033[0m" 
     bo = "\033[1m"  
