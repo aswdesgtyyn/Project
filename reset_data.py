@@ -83,8 +83,7 @@ Midsem Panic Puri,Delhi,Night,4
 Grace Mark Ghosal,Delhi,Morning,5
 Syllabus Skip Sethi,Jaipur,Afternoon,1
 Attendance Fraud Farooqui,Delhi,Evening,1
-Degree Delayed Deshmukh,Jaipur,Evening,1
-"""
+Degree Delayed Deshmukh,Jaipur,Evening,1"""
 
 fin.write(ride)
 
