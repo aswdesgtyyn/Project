@@ -22,7 +22,7 @@ class RideRequest:
             raise ValueError(f"Invalid Time {time}")
             
         
-        self.desination = destination
+        self.destination = destination
         self.year = year
         self.time = time
         self.student_name = student_name
@@ -39,6 +39,19 @@ class RideRequest:
         
         fin.close()
 
+    @classmethod
+    def ToDict(cls):
+        output = []
+        for obj in cls.Requests:
+            d =   {
+                    "Student Name": obj.student_name,
+                    "Destination": obj.destination,
+                    "Time": obj.time,
+                    "Year": obj.year
+                }
+            output.append(d)
+
+        return output
 
 
 class Cab:
@@ -76,6 +89,23 @@ class Cab:
             (cls.Cabs).append(obj)
     
         fin.close()
+
+    @classmethod
+    def ToDict(cls):
+        output = []
+        for obj in cls.Cabs:
+            d = {
+                    "Driver Name": obj.driver_name,
+                    "Destination": obj.destination,
+                    "Time": obj.time,
+                    "Max Seats": obj.max_seats,
+                    "Left": obj.left,
+                    "Seats": obj.students
+                }
+            output.append(d)
+            
+        return output
+
 
     @classmethod
     def Show(cls):

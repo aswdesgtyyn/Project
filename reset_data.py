@@ -1,4 +1,4 @@
-fin = open('data/cab_data.csv', 'w')
+fin = open('data/cab_data.json', 'w')
 
 cab = """[
   {
@@ -190,7 +190,7 @@ cab = """[
 fin.write(cab)
 fin.close()
 
-fin = open('data/ride_data.csv', 'w')
+fin = open('data/ride_data.json', 'w')
 
 ride = """[
   {

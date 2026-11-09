@@ -3,7 +3,6 @@ import json
 import os
 from classes import Cab, RideRequest, Col
 
-Waiting_List = []
 
 #--------------------------------------------------------------------------------------------------
 #                                            Functions
@@ -19,7 +18,15 @@ def Save_All():
     print(f'{Col.r}App Shutdown Detected!{Col.rst}')
     print(f'{Col.b}Saving App Data...{Col.rst}')
 
-    # Impliment a Saving Function here
+    fin = open('data/cab_data.json', 'w', newline='\n')
+    json.dump(Cab.ToDict(), fin, indent=4)
+    fin.close()
+
+    fin = open('data/ride_data.json', 'w', newline='\n')
+    json.dump(RideRequest.ToDict(), fin, indent=4)
+    fin.close()
+
+    print(f'{Col.g} Data Saved!{Col.rst}')
 
 
 
@@ -71,3 +78,17 @@ while True:
         continue
 
 clear()
+print(f'{Col.b}Saving App Data...{Col.rst}')
+
+
+fin = open('data/cab_data.json', 'w', newline='\n')
+json.dump(Cab.ToDict(), fin, indent=4)
+fin.close()
+
+
+fin = open('data/ride_data.json', 'w', newline='\n')
+json.dump(RideRequest.ToDict(), fin, indent=4)
+fin.close()
+
+
+print(f'{Col.g} Data Saved!{Col.rst}')
