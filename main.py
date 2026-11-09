@@ -1,8 +1,9 @@
 import atexit
 import json
 import os
-from classes import Cab, RideRequest, Col
 
+from config import Locations, Times, Col
+from Classes import Cab, RideRequest
 
 #--------------------------------------------------------------------------------------------------
 #                                            Functions
