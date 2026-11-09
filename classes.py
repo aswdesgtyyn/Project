@@ -26,7 +26,23 @@ class RideRequest:
         self.year = year
         self.time = time
         self.student_name = student_name
+        self.completed = False
 
+
+    def __eq__(self, other):
+        return (self.year == other.year) and (self.destination == other.destination)
+
+    def __lt__(self, other):
+        if self.destination == other.destination:
+            return self.year > other.year
+        else:
+            return self.destination > other.destination
+
+    def __gt__(self, other):
+        if self.destination == other.destination:
+            return self.year < other.year
+        else:
+            return self.destination < other.destination
 
     @classmethod
     def Load_Data(cls):
@@ -34,7 +50,7 @@ class RideRequest:
         data = json.load(fin)
 
         for row in data:
-            obj = cls(row['Student Name'], row['Destination'], row['Time'], row['Year'])
+            obj = cls(row['Student Name'], row['Destination'], row['Time'], row['Year'], row['Completed'])
             (cls.Requests).append(obj)
         
         fin.close()
