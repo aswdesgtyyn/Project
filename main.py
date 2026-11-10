@@ -30,16 +30,12 @@ def Save_All():
 
     print(f'{Col.g} Data Saved!{Col.rst}')
 
-
-
-
 #--------------------------------------------------------------------------------------------------
-atexit.register(Save_All)
 
+atexit.register(Save_All)
 
 Cab.Load_Data()
 RideRequest.Load_Data()
-
 
 while True:
     clear()
@@ -80,19 +76,15 @@ while True:
         continue
 
 
-
 clear()
 print(f'{Col.b}Saving App Data...{Col.rst}')
-
 
 fin = open('data/cab_data.json', 'w', newline='\n')
 json.dump(Cab.ToDict(), fin, indent=4)
 fin.close()
 
-
 fin = open('data/ride_data.json', 'w', newline='\n')
 json.dump(RideRequest.ToDict(), fin, indent=4)
 fin.close()
-
 
 print(f'{Col.g} Data Saved!{Col.rst}')

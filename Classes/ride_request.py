@@ -70,8 +70,112 @@ class RideRequest:
 
     @classmethod
     def AddRequest(cls):
-        clear()
-        print(f'|-------------------------------------------------------|')
-        print(f'|{Col.bo}{Col.g}                      {Col.un}Add Request{Col.rst}                      |')
-        print(f'|-------------------------------------------------------|')
-        input()
+        while 1:
+            clear()
+            print(f'|-------------------------------------------------------|')
+            print(f'|{Col.bo}{Col.g}                      {Col.un}Add Request{Col.rst}                      |')
+            print(f'|-------------------------------------------------------|')
+            print(f'| {Col.bo}Please Enter the Student Name{Col.rst}                         |')
+            print(f'| Enter Blank to exit                                   |')
+            print(f'|-------------------------------------------------------|')
+            name = input('|>')
+
+            if not name:
+                break
+
+
+            clear()
+            print(f'|-------------------------------------------------------|')
+            print(f'|{Col.bo}{Col.g}                      {Col.un}Add Request{Col.rst}                      |')
+            print(f'|-------------------------------------------------------|')
+            print(f'| Select the Destination.                               |')
+            print(f'| 1. {Col.b}Delhi{Col.rst}                                              |')
+            print(f'| 2. {Col.y}Jaipur{Col.rst}                                             |')
+            print(f'|-------------------------------------------------------|')
+
+            try:
+                o = int(input('|>'))
+            except:
+                clear()
+                print(f'{Col.r} Invalid Input please try again{Col.rst}')
+                input('|>')
+                clear()
+                continue
+
+            if o not in (1,2):
+                clear()
+                print(f'{Col.r} Invalid Input please try again{Col.rst}')
+                input('|>')
+                clear()
+                continue
+
+            dest = Locations[o-1]
+
+            clear()
+            print(f'|-------------------------------------------------------|')
+            print(f'|{Col.bo}{Col.g}                      {Col.un}Add Request{Col.rst}                      |')
+            print(f'|-------------------------------------------------------|')
+            print(f'| Select the Time.                                      |')
+            print(f'| 1. {Col.y}{Col.bo}Morning{Col.rst}                                            |')
+            print(f'| 2. {Col.y}Afternoon{Col.rst}                                          |')
+            print(f'| 3. {Col.b}Evening{Col.rst}                                            |')
+            print(f'| 4. {Col.b}{Col.bo}Night{Col.rst}                                              |')
+            print(f'|-------------------------------------------------------|')
+
+            try:
+                o = int(input('|>'))
+            except:
+                clear()
+                print(f'{Col.r}Invalid Input please try again{Col.rst}')
+                input('|>')
+                clear()
+                continue
+
+            if o not in (1,2,3,4):
+                clear()
+                print(f'{Col.r}Invalid Input please try again{Col.rst}')
+                input('|>')
+                clear()
+                continue
+
+            tim = Times[o-1]
+
+            clear()
+            print(f'|-------------------------------------------------------|')
+            print(f'|{Col.bo}{Col.g}                      {Col.un}Add Request{Col.rst}                      |')
+            print(f'|-------------------------------------------------------|')
+            print(f'| Please Enter Year of Study...                         |')
+            print(f'|-------------------------------------------------------|')
+
+            try:
+                o = int(input('|>'))
+            except:
+                clear()
+                print(f'{Col.r}Invalid Input please try again{Col.rst}')
+                input('|>')
+                clear()
+                continue
+
+            if o > 5 or o < 0:
+                clear()
+                print(f'{Col.r}Invalid Input please try again{Col.rst}')
+                input('|>')
+                clear()
+                continue
+
+            year = o
+
+            obj = cls(name, dest, tim, year, False)
+            cls.Requests.append(obj)
+
+            clear()
+            print(f'|-------------------------------------------------------|')
+            print(f'|{Col.bo}{Col.g}                      {Col.un}Add Request{Col.rst}                      |')
+            print(f'|-------------------------------------------------------|')
+            print(f'|{Col.g}{Col.b} Request Successfully Added ! {Col.rst}.            |')
+            print(f'| Press Enter to Continue...                            |')
+
+            break
+
+
+
