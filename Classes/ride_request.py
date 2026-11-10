@@ -1,5 +1,6 @@
 import json
-from config import Locations, Times, Col, clear
+from Classes.config import Locations, Times, Col, clear
+
 
 class RideRequest:
     Requests = []
@@ -22,7 +23,7 @@ class RideRequest:
         self.year = year
         self.time = time
         self.student_name = student_name
-        self.completed = False
+        self.completed = completed
 
 
     def __eq__(self, other):
@@ -59,6 +60,7 @@ class RideRequest:
                     "Student Name": obj.student_name,
                     "Destination": obj.destination,
                     "Time": obj.time,
+                    "Completed": obj.completed,
                     "Year": obj.year
                 }
             output.append(d)
@@ -70,6 +72,6 @@ class RideRequest:
     def AddRequest(cls):
         clear()
         print(f'|-------------------------------------------------------|')
-        print(f'|{Col.bo}{Col.g}                       {Col.un}Add Request{Col.rst}                       |')
+        print(f'|{Col.bo}{Col.g}                      {Col.un}Add Request{Col.rst}                      |')
         print(f'|-------------------------------------------------------|')
         input()

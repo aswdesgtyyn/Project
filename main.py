@@ -3,7 +3,7 @@ import json
 import heapq
 import os
 
-from config import Locations, Times, Col
+from Classes.config import Locations, Times, Col
 from Classes import Cab, RideRequest
 
 #--------------------------------------------------------------------------------------------------

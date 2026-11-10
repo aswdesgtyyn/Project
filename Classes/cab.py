@@ -1,5 +1,5 @@
 import json
-from config import Locations, Times, Col, clear
+from Classes.config import Locations, Times, Col, clear
 
 
 class Cab:
