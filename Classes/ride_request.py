@@ -1,10 +1,10 @@
 import json
-from config import Locations, Times, Col
+from config import Locations, Times, Col, clear
 
 class RideRequest:
     Requests = []
 
-    def __init__(self, student_name :str, destination :str, time :str, year :int):
+    def __init__(self, student_name :str, destination :str, time :str, year :int, completed :bool):
         
         if destination not in Locations:
             raise ValueError(f"{destination} is not in List of Permitted Locations")
@@ -64,3 +64,12 @@ class RideRequest:
             output.append(d)
 
         return output
+
+
+    @classmethod
+    def AddRequest(cls):
+        clear()
+        print(f'|-------------------------------------------------------|')
+        print(f'|{Col.bo}{Col.g}                       {Col.un}Add Request{Col.rst}                       |')
+        print(f'|-------------------------------------------------------|')
+        input()

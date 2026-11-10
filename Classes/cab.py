@@ -1,5 +1,5 @@
 import json
-from config import Locations, Times, Col
+from config import Locations, Times, Col, clear
 
 
 class Cab:
@@ -80,6 +80,6 @@ class Cab:
 
     
         print('|------------------------------------------------------------------|')
-        print('| Press Enter to go back...                                                  |')
+        print('| Press Enter to go back...                                        |')
         print('|------------------------------------------------------------------|')
         input('|>')

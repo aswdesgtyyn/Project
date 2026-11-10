@@ -2,6 +2,12 @@
 Locations = ("Delhi", "Jaipur")
 Times =  ('Morning', 'Afternoon', 'Evening', 'Night')
 
+def clear():
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
+
 
 class Col:
     rst = "\033[0m" 

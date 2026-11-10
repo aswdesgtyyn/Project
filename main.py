@@ -1,5 +1,6 @@
 import atexit
 import json
+import heapq
 import os
 
 from config import Locations, Times, Col
@@ -62,7 +63,7 @@ while True:
         continue
 
     if o == 1:
-        pass
+        RideRequest.AddRequest()
     elif o == 2:
         pass
     elif o == 3:
@@ -77,6 +78,8 @@ while True:
         print('Press Enter to Continue...')
         input()
         continue
+
+
 
 clear()
 print(f'{Col.b}Saving App Data...{Col.rst}')
