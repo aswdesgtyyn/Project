@@ -1,9 +1,12 @@
 import json
+import heapq
 from Classes.config import Locations, Times, Col, clear
 
 
 class RideRequest:
     Requests = []
+    Heap = []
+    _Count = 0
 
     def __init__(self, student_name :str, destination :str, time :str, year :int, completed :bool):
         
@@ -24,22 +27,19 @@ class RideRequest:
         self.time = time
         self.student_name = student_name
         self.completed = completed
+        self.count = RideRequest._Count
+        RideRequest._Count += 1
+
 
 
     def __eq__(self, other):
-        return (self.year == other.year) and (self.destination == other.destination)
+        return (self.year == other.year) and (self._Count == other._Count)
 
     def __lt__(self, other):
-        if self.destination == other.destination:
+        if self.year == other.year:
+            return self._Count > other._Count
+        else:
             return self.year > other.year
-        else:
-            return self.destination > other.destination
-
-    def __gt__(self, other):
-        if self.destination == other.destination:
-            return self.year < other.year
-        else:
-            return self.destination < other.destination
 
     @classmethod
     def Load_Data(cls):
@@ -48,7 +48,9 @@ class RideRequest:
 
         for row in data:
             obj = cls(row['Student Name'], row['Destination'], row['Time'], row['Year'], row['Completed'])
+            
             (cls.Requests).append(obj)
+            heapq.heappush(cls.Heap, obj)
         
         fin.close()
 
@@ -167,6 +169,7 @@ class RideRequest:
 
             obj = cls(name, dest, tim, year, False)
             cls.Requests.append(obj)
+            heapq.heappush(cls.Heap, obj)
 
             clear()
             print(f'|-------------------------------------------------------|')
