@@ -16,7 +16,7 @@ class RideRequest:
             raise ValueError(f"{destination} is not in List of Permitted Locations")
             
         
-        if year < 0 and year > 6:
+        if year < 0 or year > 6:
             raise ValueError(f"Invalid Year, {year}")
             
 
