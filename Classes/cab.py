@@ -1,5 +1,7 @@
 import json
+import heapq
 from Classes.config import Locations, Times, Col, clear
+from Classes.ride_request import RideRequest
 
 
 class Cab:
@@ -83,3 +85,23 @@ class Cab:
         print('| Press Enter to go back...                                        |')
         print('|------------------------------------------------------------------|')
         input('|>')
+
+        @classmethod
+        def FindMatches(cls, l):
+            clear()
+            print(f'|-----------------------------------------------------------------|')
+            print(f'|                           {Col.bo}{Col.b}Find Matches{Col.rst}                          |')
+            print(f'|-----------------------------------------------------------------|')
+
+            l = list(l)
+            
+            for index, item in enumerate(cls.Cabs):
+
+                if not item.left:
+                    print(f"| {Col.b} Cab - {index:<3} Driver : {item.driver_name}")
+                    print(f"To : {Col.b if item.destination[0] == 'D' else Col.y}{item.destination}{Col.rst}")
+                    print(f"")
+
+        @classmethod
+        def Dispatch():
+            pass

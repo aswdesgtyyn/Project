@@ -1,11 +1,13 @@
 import json
 import heapq
-from Classes.config import Locations, Times, Col, clear
+from Classes.config import Locations, Times, Col, clear, to_num
 
 
 class RideRequest:
     Requests = []
-    Heap = []
+    # Heaps [Delhi Heaps, Jaipur Heaps]
+    # Heaps -> Morning Afternoon Evening Night
+    Heaps = [[[], [], [], []], [[], [], [], []]]
     _Count = 0
 
     def __init__(self, student_name :str, destination :str, time :str, year :int, completed :bool):
@@ -41,6 +43,9 @@ class RideRequest:
         else:
             return self.year > other.year
 
+    def __str__(self):
+        return f"{self.student_name:<30} {self.year:<2} {self.destination:<10} {self.time:<5}"
+
     @classmethod
     def Load_Data(cls):
         fin = open('data/ride_data.json', newline='\n', mode='r')
@@ -50,7 +55,9 @@ class RideRequest:
             obj = cls(row['Student Name'], row['Destination'], row['Time'], row['Year'], row['Completed'])
             
             (cls.Requests).append(obj)
-            heapq.heappush(cls.Heap, obj)
+            if not obj.completed:
+                d,t = to_num(row['Destination'], row['Time'])
+                heapq.heappush(cls.Heaps[d][t], obj)
         
         fin.close()
 
@@ -169,7 +176,9 @@ class RideRequest:
 
             obj = cls(name, dest, tim, year, False)
             cls.Requests.append(obj)
-            heapq.heappush(cls.Heap, obj)
+
+            d,t = to_num(dest, tim)
+            heapq.heappush(cls.Heaps[d][t], obj)
 
             clear()
             print(f'|-------------------------------------------------------|')
@@ -179,6 +188,7 @@ class RideRequest:
             print(f'| Press Enter to Continue...                            |')
 
             break
+
 
 
 

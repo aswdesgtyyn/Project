@@ -11,6 +11,9 @@ def clear():
     else:
         os.system('clear')
 
+def to_num(dest, tim):
+    return Locations.index(dest), Times.index(tim)
+
 
 class Col:
     rst = "\033[0m" 
