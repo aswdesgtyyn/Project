@@ -44,7 +44,7 @@ class RideRequest:
             return self.year > other.year
 
     def __str__(self):
-        return f"{self.student_name:<30} {self.year:<2} {self.destination:<10} {self.time:<5}"
+        return f"| {self.student_name:<30} {self.year:<5} {self.destination:<10} {self.time:<5}"
 
     @classmethod
     def Load_Data(cls):

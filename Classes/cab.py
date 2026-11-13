@@ -7,8 +7,6 @@ from Classes.ride_request import RideRequest
 
 class Cab:
     Cabs = []   
-    a = 0
-
 
     def __init__(self, driver_name :str, destination :str,  max_seats :int, time :str, left :bool, students :list[str]):
 
@@ -96,32 +94,35 @@ class Cab:
         print(f'|                           {Col.bo}{Col.b}Find Matches{Col.rst}                          |')
         print(f'|-----------------------------------------------------------------|')
 
+        temp_ld = [[queue[:] for queue in dest] for dest in ld]
 
         for index, item in enumerate(cls.Cabs):
 
             if item.left:
-                print(f"| {Col.b} Cab - {index:<3} Driver : {item.driver_name}")
-                print(f"To : {Col.b if item.destination[0] == 'D' else Col.y}{item.destination}{Col.rst}")
-                print("Student List")
-                print(f"{'Name':<30} {'Year':<2} {'Desination':<10} {'Time':<5}")
+                print(f"|               {Col.bo} Cab - {index+1:<3} Driver : {item.driver_name} {Col.rst}")
+                print(f"| {Col.bo}To : {Col.b if item.destination[0] == 'D' else Col.y}{item.destination}{Col.rst}{Col.bo}  ({item.time}) {Col.rst}")
+                print(f'|                                                                 |')
+                print(f"|                           {Col.g}{Col.bo}Student List{Col.rst}                          |")
+                print(f"| {Col.bo}{'Name':<30} {'Year':<4} {' Desination':<10} {'Time':<5}{Col.rst}            ")
                 d, t = to_num(item.destination, item.time)
 
-                m = ld[d][t]
+                m = temp_ld[d][t]
 
                 available = item.max_seats - len(item.students)
-                preview = heapq.nsmallest(available, m)
-                if not preview:
-                    print('Seats Empty')
-                else:
-                    for x, w in enumerate(preview):
-                        print(f'{w}')
+                for x in range(available):
+                    if not m:
+                        print(f'| Rest of Seats Empty                                             |')
+                        break
+                    w = heapq.heappop(m)
+                    print(f'{w}')
 
-                    if len(preview) < available:
-                        print('Rest of Seats Empty')
+                print(f'|                                                                 |')
+                print(f'|-----------------------------------------------------------------|')
+                print(f'|                                                                 |')
 
         
         print(f'|-----------------------------------------------------------------|')
-        print(f'{Col.bo} Press Enter to Continue... {Col.rst}')
+        print(f'| {Col.bo}Press Enter to Continue...{Col.rst}                                      |')                                  
         print(f'|-----------------------------------------------------------------|')
         input('|>')
         clear()
@@ -129,9 +130,4 @@ class Cab:
 
     @classmethod
     def Disp(cls):
-        if not cls.a:
-            clear()
-            print(f"{Col.bo}{Col.r}Please Find Matches First!{Col.rst}")
-            print('Press Enter to Continue...')
-            input('|>')
-            clear()
+        print('')
