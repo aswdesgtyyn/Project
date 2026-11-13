@@ -77,7 +77,7 @@ class Cab:
             tim = a.time
             stu = f'{len(a.students)}/{a.max_seats}'
 
-            lef = f"{Col.g}Available  {Col.rst}" if a.left else f"{Col.r}Left       {Col.rst}"
+            lef = f"{Col.g}Available  {Col.rst}" if not a.left else f"{Col.r}Left       {Col.rst}"
 
             print(f"|  {dn:<20} {des} {tim:<10} {stu:<5} {lef:<5}  |")
 
@@ -130,4 +130,63 @@ class Cab:
 
     @classmethod
     def Disp(cls):
-        print('')
+        clear()
+        print(f'|---------------------------------------------------------------------------|')
+        print(f'|                                {Col.un}{Col.bo}{Col.b}Dispatch a Cab{Col.rst}                             |')
+        print(f'|---------------------------------------------------------------------------|')
+        
+        try:
+            print(f'| Select Destination.                                                       |')
+            print(f'| 1. Delhi                                                                  |')
+            print(f'| 2. Jaipur                                                                 |')
+            print(f'|---------------------------------------------------------------------------|')
+            dest = Locations[int(input('|> ')) - 1]
+
+            clear()
+
+            print(f'|---------------------------------------------------------------------------|')
+            print(f'|                                {Col.un}{Col.bo}{Col.b}Dispatch a Cab{Col.rst}                             |')
+            print(f'|---------------------------------------------------------------------------|')
+            print(f'| Select Destination.                                                       |')
+            print(f'| 1. Morning                                                                |')
+            print(f'| 2. Afternoon                                                              |')
+            print(f'| 3. Evening                                                                |')
+            print(f'| 4. Night                                                                  |')
+            print(f'|---------------------------------------------------------------------------|')
+            tim = Times[int(input('|> ')) - 1]
+        except:
+            print(f"{Col.r}{Col.bo}Invalid input.{Col.rst}")
+            input('|> Press Enter...')
+            return
+
+        dest_id, tim_id = to_num(dest, tim)
+        m = RideRequest.Heaps[dest_id][tim_id]
+
+        target_cab = next((cab for cab in cls.Cabs if not cab.left and cab.destination == dest and cab.time == tim), None)
+        
+        if not target_cab:
+            clear()
+            print(f"{Col.r}No open cabs available for {dest} at {tim}.{Col.rst}")
+            input('|>')
+            return
+            
+        if not m:
+            clear()
+            print(f"{Col.r}No students waiting for this trip.{Col.rst}")
+            input('|>')
+            return
+
+        available = target_cab.max_seats - len(target_cab.students)
+        assigned = 0
+        
+        while m and assigned < available:
+            student_req = heapq.heappop(m)
+            target_cab.students.append(student_req.student_name)
+            student_req.completed = True
+            assigned += 1
+            
+        target_cab.left = True
+        
+        clear()
+        print(f"{Col.g}Successfully dispatched {target_cab.driver_name}'s cab with {assigned} students!{Col.rst}")
+        input('|>')
