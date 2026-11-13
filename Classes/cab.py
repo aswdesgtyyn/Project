@@ -31,7 +31,18 @@ class Cab:
 
     @classmethod
     def Load_Data(cls):
-        fin = open('data/cab_data.json', newline='\n', mode='r')
+        try:
+            fin = open('data/cab_data.json', newline='\n', mode='r')
+        except:
+            clear()
+            print(f'{Col.r}{Col.bo}File is Missing/Corrupted !{Col.rst}')
+            print(f'{Col.b}{Col.bo}Creating New Blank Files{Col.rst}')
+            print('Press Enter to Continue')
+            input('|>')
+
+            fin = open('data/cab_data.json', newline='\n', mode='w')
+            fin.close()
+            return None
         data = json.load(fin)
 
         for row in data:
@@ -39,6 +50,7 @@ class Cab:
             (cls.Cabs).append(obj)
     
         fin.close()
+        return None
 
     @classmethod
     def ToDict(cls):
@@ -180,7 +192,22 @@ class Cab:
         assigned = 0
         
         while m and assigned < available:
-            student_req = heapq.heappop(m)
+            try:
+                student_req = heapq.heappop(m)
+            except:
+                print(f'{Col.bo}{Col.r}Not Enough Students to Fill Cab!{Col.r}')
+                print('Enter 0 to Go Back, Enter 1 to still Dispatch')
+                o = input('|>')
+
+                if o == '0':
+                    return None
+                elif o == '1':
+                    break
+                else:
+                    print('Invalid Option : Click Enter to Go Back')
+                    input('|>')
+                    return None
+                
             target_cab.students.append(student_req.student_name)
             student_req.completed = True
             assigned += 1

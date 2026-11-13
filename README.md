@@ -42,5 +42,18 @@ Contains Mainly the Support Functions for main.py, cab.py and ride_request.py
 Mainly contains the clear() function for clearing the screen and the Color Class for Handling the Text Colours
 
 ---
+## Brownie Point Things Done
+ - App Saves the Current State upon closing
+ - Even if it Crashes or Ctrl - C is hit App will still save before shutting down
+    - Note it does not save after each change but will save at each exit
+ - After Saving and After Loading the Order of the Requests is Maintained
+ - Even if Data Files do not exist App Does not crash and creates new blank files
+ - JSON was used as the Format of the Data rather than CSV, XML or pickle (Binary Files) because
+    - JSON has analogues for all major python data types and can be loaded and dumped easily through singular Functions
+ - If two students are in the same year the one who Requested first will get priority.
+ - If a Cab is Half Empty / Has Vacant Seats but no Student to for it to be occupied by
+    - The user is informed and given an option to either still dispatch or go back to main menu
+
+---
 ### Note
 - To Generate the Dummy Data i.e. cab_data.json and ride_data.json AI has been used with permission.

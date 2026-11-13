@@ -48,7 +48,18 @@ class RideRequest:
 
     @classmethod
     def Load_Data(cls):
-        fin = open('data/ride_data.json', newline='\n', mode='r')
+        try:
+            fin = open('data/ride_data.json', newline='\n', mode='r')
+        except:
+            clear()
+            print(f'{Col.r}{Col.bo}Ride Data File is Missing/Corrupted !{Col.rst}')
+            print(f'{Col.b}{Col.bo}Creating New Blank File !{Col.rst}')
+            print('Press Enter to Continue')
+            input('|>')
+            
+            fin = open('data/ride_data.json', newline='\n', mode='w')
+            fin.close()
+            return None
         data = json.load(fin)
 
         for row in data:
@@ -60,6 +71,7 @@ class RideRequest:
                 heapq.heappush(cls.Heaps[d][t], obj)
         
         fin.close()
+        return None
 
     @classmethod
     def ToDict(cls):
