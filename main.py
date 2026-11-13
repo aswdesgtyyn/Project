@@ -63,7 +63,7 @@ while True:
     elif o == 2:
         Cab.FindMatches(RideRequest.Heaps)
     elif o == 3:
-        Cab.Dispatch()
+        Cab.Disp()
     elif o == 4:
         Cab.Show()
     elif o == 5:

@@ -1,11 +1,14 @@
 import json
 import heapq
-from Classes.config import Locations, Times, Col, clear
+from Classes.config import Locations, Times, Col, clear, to_num
 from Classes.ride_request import RideRequest
 
 
+
 class Cab:
-    Cabs = []
+    Cabs = []   
+    a = 0
+
 
     def __init__(self, driver_name :str, destination :str,  max_seats :int, time :str, left :bool, students :list[str]):
 
@@ -86,22 +89,49 @@ class Cab:
         print('|------------------------------------------------------------------|')
         input('|>')
 
-        @classmethod
-        def FindMatches(cls, l):
+    @classmethod
+    def FindMatches(cls, ld):
+        clear()
+        print(f'|-----------------------------------------------------------------|')
+        print(f'|                           {Col.bo}{Col.b}Find Matches{Col.rst}                          |')
+        print(f'|-----------------------------------------------------------------|')
+
+
+        for index, item in enumerate(cls.Cabs):
+
+            if item.left:
+                print(f"| {Col.b} Cab - {index:<3} Driver : {item.driver_name}")
+                print(f"To : {Col.b if item.destination[0] == 'D' else Col.y}{item.destination}{Col.rst}")
+                print("Student List")
+                print(f"{'Name':<30} {'Year':<2} {'Desination':<10} {'Time':<5}")
+                d, t = to_num(item.destination, item.time)
+
+                m = ld[d][t]
+
+                available = item.max_seats - len(item.students)
+                preview = heapq.nsmallest(available, m)
+                if not preview:
+                    print('Seats Empty')
+                else:
+                    for x, w in enumerate(preview):
+                        print(f'{w}')
+
+                    if len(preview) < available:
+                        print('Rest of Seats Empty')
+
+        
+        print(f'|-----------------------------------------------------------------|')
+        print(f'{Col.bo} Press Enter to Continue... {Col.rst}')
+        print(f'|-----------------------------------------------------------------|')
+        input('|>')
+        clear()
+        return None
+
+    @classmethod
+    def Disp(cls):
+        if not cls.a:
             clear()
-            print(f'|-----------------------------------------------------------------|')
-            print(f'|                           {Col.bo}{Col.b}Find Matches{Col.rst}                          |')
-            print(f'|-----------------------------------------------------------------|')
-
-            l = list(l)
-            
-            for index, item in enumerate(cls.Cabs):
-
-                if not item.left:
-                    print(f"| {Col.b} Cab - {index:<3} Driver : {item.driver_name}")
-                    print(f"To : {Col.b if item.destination[0] == 'D' else Col.y}{item.destination}{Col.rst}")
-                    print(f"")
-
-        @classmethod
-        def Dispatch():
-            pass
+            print(f"{Col.bo}{Col.r}Please Find Matches First!{Col.rst}")
+            print('Press Enter to Continue...')
+            input('|>')
+            clear()

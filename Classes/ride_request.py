@@ -35,11 +35,11 @@ class RideRequest:
 
 
     def __eq__(self, other):
-        return (self.year == other.year) and (self._Count == other._Count)
+        return (self.year == other.year) and (self.count == other.count)
 
     def __lt__(self, other):
         if self.year == other.year:
-            return self._Count > other._Count
+            return self.count < other.count
         else:
             return self.year > other.year
 
