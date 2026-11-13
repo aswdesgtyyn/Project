@@ -5,7 +5,7 @@
 >
 
 ## Project Structure
-``` tree
+
 ├── Classes
 │   ├── __init__.py
 │   ├── cab.py
@@ -17,7 +17,7 @@
 │   └── ride_data.json
 ├── main.py
 └── reset_data.py
-```
+
 
 ## main.py
 The Main Python File, Contains the Main Menu and Save All Functions. 
@@ -54,6 +54,14 @@ Mainly contains the clear() function for clearing the screen and the Color Class
  - If two students are in the same year the one who Requested first will get priority.
  - If a Cab is Half Empty / Has Vacant Seats but no Student to for it to be occupied by
     - The user is informed and given an option to either still dispatch or go back to main menu
+
+## Big O
+- Adding N requests : O(N log N)
+    - Since Adding a Request to the Heap takes Log N time and we are adding N requests
+- Sending off one cab : O(log N)
+    - Since sending a cab requires popping from the heap, to reheap takes Log N time
+- Finding an open cab for a trip : O(N)
+    - Since time searching for the cab grows linearly with the number of cabs
 
 ---
 ### Note
