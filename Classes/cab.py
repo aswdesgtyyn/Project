@@ -13,7 +13,7 @@ class Cab:
         if destination not in Locations:
             raise ValueError(f"{destination} is not in List of Permitted Locations")
         
-        if max_seats > 4 and max_seats < 0:
+        if max_seats > 4 or max_seats < 0:
             raise ValueError(f"Invalid Number of Seats, {max_seats}")
         
         if len(students) > max_seats:
